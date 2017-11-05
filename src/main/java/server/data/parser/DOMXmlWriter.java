@@ -65,24 +65,25 @@ public class DOMXmlWriter {
 
         Element studentProfile = doc.createElement("Student");
 
-        // устанавливаем атрибут id
-        studentProfile.setAttribute("id", id);
+//        // устанавливаем атрибут id
+//        studentProfile.setAttribute("id", id);
 
-        // создаем элемент name
-        studentProfile.appendChild(getLanguageElements(doc, studentProfile, "firstName", firstName));
+        studentProfile.appendChild(getProfileElements(doc, studentProfile, "id", id));
+        // создаем элемент firstName
+        studentProfile.appendChild(getProfileElements(doc, studentProfile, "firstName", firstName));
 
-        studentProfile.appendChild(getLanguageElements(doc, studentProfile, "secondName", secondName));
+        studentProfile.appendChild(getProfileElements(doc, studentProfile, "secondName", secondName));
 
-        studentProfile.appendChild(getLanguageElements(doc, studentProfile, "university", university));
+        studentProfile.appendChild(getProfileElements(doc, studentProfile, "university", university));
 
-        studentProfile.appendChild(getLanguageElements(doc, studentProfile, "avgScore", avgScore));
+        studentProfile.appendChild(getProfileElements(doc, studentProfile, "avgScore", avgScore));
 
         return studentProfile;
     }
 
 
     // утилитный метод для создание нового узла XML-файла
-    private static Node getLanguageElements(Document doc, Element element, String name, String value) {
+    private static Node getProfileElements(Document doc, Element element, String name, String value) {
         Element node = doc.createElement(name);
         node.appendChild(doc.createTextNode(value));
         return node;
