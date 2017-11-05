@@ -26,7 +26,7 @@ public class Client {
 
         String fuser,fserver;
 
-        while ((fuser = inu.readLine())!=null) {
+        while ((fuser = inu.readLine()) != null) {
             out.println(fuser);
             fserver = in.readLine();
             System.out.println(fserver);

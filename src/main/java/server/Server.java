@@ -1,5 +1,7 @@
 package server;
 
+import server.data.parser.DOMXmlWriter;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,6 +49,9 @@ public class Server {
                 break;
             }
             out.println("S ::: " + input);
+
+            DOMXmlWriter.write();
+
             System.out.println(input);
         }
         out.close();
