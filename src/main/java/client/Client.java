@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Client {
+
     public static void main(String[] args) throws IOException {
 
         System.out.println("Welcome to Client side");
@@ -16,21 +17,29 @@ public class Client {
         System.out.println("Connecting to... " + "localhost");
 
         fromServer = new Socket("localhost",4444);
+
         BufferedReader in  = new
                 BufferedReader(new
                 InputStreamReader(fromServer.getInputStream()));
+
         PrintWriter out = new
                 PrintWriter(fromServer.getOutputStream(),true);
+
         BufferedReader inu = new
                 BufferedReader(new InputStreamReader(System.in));
 
         String fuser,fserver;
 
-        while ((fuser = inu.readLine()) != null) {
+        int j;
+
+        while (true) {
+            j = Integer.parseInt(in.readLine());
+            for (int i = 0; i < j; i++) {
+                fserver = in.readLine();
+                System.out.println(fserver);
+            }
+            fuser = inu.readLine();
             out.println(fuser);
-            fserver = in.readLine();
-            System.out.println(fserver);
-            if (fuser.equalsIgnoreCase("close")) break;
             if (fuser.equalsIgnoreCase("exit")) break;
         }
 

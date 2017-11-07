@@ -50,7 +50,7 @@ public class DOMXmlReader {
         if (node.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) node;
 
-            profile.setId(Long.parseLong(getTagValue("id", element)));
+            profile.setId(Integer.parseInt(getTagValue("id", element)));
             profile.setFirstName(getTagValue("firstName", element));
             profile.setSecondName(getTagValue("secondName", element));
             profile.setUniversity(getTagValue("university", element));

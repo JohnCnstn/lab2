@@ -7,7 +7,7 @@ public class Profile {
 
     @Getter
     @Setter
-    private long id;
+    private int id;
 
     @Getter
     @Setter
@@ -25,7 +25,7 @@ public class Profile {
     @Setter
     private byte avgScore;
 
-    public Profile(long id, String firstName, String secondName, String university, byte avgScore) {
+    public Profile(int id, String firstName, String secondName, String university, byte avgScore) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;

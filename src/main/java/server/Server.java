@@ -3,6 +3,11 @@ package server;
 import server.data.parser.DOMXmlModifier;
 import server.data.parser.DOMXmlReader;
 import server.data.parser.DOMXmlWriter;
+import server.presentation.delegator.IDelegator;
+import server.presentation.delegator.impl.greetinger.DelegatorImpl;
+import server.presentation.view.IView;
+import server.presentation.view.View;
+import server.presentation.view.greetinger.GreetingView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +17,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
+
     public static void main(String[] args) throws IOException {
 
         System.out.println("Server running...");
@@ -46,29 +52,34 @@ public class Server {
 
         System.out.println("Wait for messages");
 
+        IDelegator delegator = new DelegatorImpl(out);
+
         while ((input = in.readLine()) != null) {
-            input.toLowerCase();
-            switch (input) {
-                case "admin": {
-                    DOMXmlReader.reader();
-                    break;
-                }
-                case "user": {
-                    DOMXmlWriter.write();
-                    break;
-                }
-                case "updater": {
-                    DOMXmlModifier.modify();
-                    break;
-                }
-                case "exit": {
-                    System.exit(1);
-                }
-            }
-            out.println("S ::: " + input);
+
+            delegator.whatView(Integer.parseInt(input));
+
+//            switch (input) {
+//                case "1": {
+//                    DOMXmlReader.reader();
+//                    break;
+//                }
+//                case "2": {
+//                    DOMXmlWriter.write();
+//                    break;
+//                }
+//                case "3": {
+//                    DOMXmlModifier.modify(1);
+//                    break;
+//                }
+//                case "exit": {
+//                    System.exit(1);
+//                }
+//            }
 
             System.out.println(input);
+
         }
+
         out.close();
         in.close();
         fromClient.close();
