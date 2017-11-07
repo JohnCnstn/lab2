@@ -1,7 +1,5 @@
 package client;
 
-import server.data.parser.DOMXmlReader;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,8 +10,6 @@ public class Client {
     public static void main(String[] args) throws IOException {
 
         System.out.println("Welcome to Client side");
-
-        DOMXmlReader.reader();
 
         Socket fromServer;
 

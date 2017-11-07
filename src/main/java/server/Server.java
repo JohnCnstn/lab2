@@ -1,5 +1,7 @@
 package server;
 
+import server.data.parser.DOMXmlModifier;
+import server.data.parser.DOMXmlReader;
 import server.data.parser.DOMXmlWriter;
 
 import java.io.BufferedReader;
@@ -45,12 +47,25 @@ public class Server {
         System.out.println("Wait for messages");
 
         while ((input = in.readLine()) != null) {
-            if (input.equalsIgnoreCase("exit")) {
-                break;
+            input.toLowerCase();
+            switch (input) {
+                case "admin": {
+                    DOMXmlReader.reader();
+                    break;
+                }
+                case "user": {
+                    DOMXmlWriter.write();
+                    break;
+                }
+                case "updater": {
+                    DOMXmlModifier.modify();
+                    break;
+                }
+                case "exit": {
+                    System.exit(1);
+                }
             }
             out.println("S ::: " + input);
-
-            DOMXmlWriter.write();
 
             System.out.println(input);
         }
