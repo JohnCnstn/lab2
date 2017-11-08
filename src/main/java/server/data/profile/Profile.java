@@ -25,17 +25,6 @@ public class Profile {
     @Setter
     private byte avgScore;
 
-    public Profile(int id, String firstName, String secondName, String university, byte avgScore) {
-        this.id = id;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.university = university;
-        this.avgScore = avgScore;
-    }
-
-    public Profile() {
-    }
-
     @Override
     public String toString() {
         return "Profile{" +

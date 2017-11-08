@@ -1,5 +1,6 @@
 package server.presentation.view;
 
+import java.io.BufferedReader;
 import java.io.PrintWriter;
 
 public abstract class View implements IView {
@@ -16,7 +17,7 @@ public abstract class View implements IView {
         return usersChoice;
     }
 
-    public View(PrintWriter out) {
-        setViewForUser(out);
+    public View(PrintWriter out, BufferedReader in) {
+        setViewForUser(out, in);
     }
 }

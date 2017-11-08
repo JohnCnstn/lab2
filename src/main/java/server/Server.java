@@ -44,41 +44,19 @@ public class Server {
             System.exit(-1);
         }
 
+        String input;
+
         in  = new BufferedReader(new
                 InputStreamReader(fromClient.getInputStream()));
         out = new PrintWriter(fromClient.getOutputStream(),true);
 
-        String input;
-
         System.out.println("Wait for messages");
 
-        IDelegator delegator = new DelegatorImpl(out);
+        IDelegator delegator = new DelegatorImpl(out, in);
 
-        while ((input = in.readLine()) != null) {
+        input = in.readLine();
 
-            delegator.whatView(Integer.parseInt(input));
-
-//            switch (input) {
-//                case "1": {
-//                    DOMXmlReader.reader();
-//                    break;
-//                }
-//                case "2": {
-//                    DOMXmlWriter.write();
-//                    break;
-//                }
-//                case "3": {
-//                    DOMXmlModifier.modify(1);
-//                    break;
-//                }
-//                case "exit": {
-//                    System.exit(1);
-//                }
-//            }
-
-            System.out.println(input);
-
-        }
+        delegator.whatView(Integer.parseInt(input));
 
         out.close();
         in.close();

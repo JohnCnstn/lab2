@@ -15,7 +15,7 @@ import java.io.File;
 
 public class DOMXmlWriter {
 
-    public static void write(){
+    public static void create(String id, String firstName, String secondName, String university, String avgScore){
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;
         try {
@@ -31,28 +31,53 @@ public class DOMXmlWriter {
             doc.appendChild(rootElement);
 
             // добавляем первый дочерний элемент к корневому
-            rootElement.appendChild(getProfile(doc, "1", "Pavel", "Khankevich",
-                    "BSUIR", "6"));
-
-            //добавляем второй дочерний элемент к корневому
-            rootElement.appendChild(getProfile(doc, "2", "Bogdan", "Fedorenko",
-                    "BSUIR", "7"));
+            rootElement.appendChild(getProfile(doc, id, firstName, secondName,
+                    university, avgScore));
 
             //создаем объект TransformerFactory для печати в консоль
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             // для красивого вывода в консоль
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);
 
-            //печатаем в консоль или файл
-            StreamResult console = new StreamResult(System.out);
+            //печатаем в файл
             StreamResult file = new StreamResult(new File("D:/JohnCnstn/BSUIR/3k1s/java/lab2/xml/profiles.xml"));
 
             //записываем данные
-            transformer.transform(source, console);
             transformer.transform(source, file);
-            System.out.println("Создание XML файла закончено");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void write(String id, String firstName, String secondName, String university, String avgScore){
+        String filepath = "D:/JohnCnstn/BSUIR/3k1s/java/lab2/xml/profiles.xml";
+        File xmlFile = new File(filepath);
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        try {
+            builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+            Element element =
+                    doc.getDocumentElement();
+
+            // добавляем первый дочерний элемент к корневому
+            element.appendChild(getProfile(doc, id, firstName, secondName,
+                    university, avgScore));
+
+            //создаем объект TransformerFactory для печати в консоль
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+
+            DOMSource source = new DOMSource(doc);
+
+            //печатаем в файл
+            StreamResult file = new StreamResult(new File("D:/JohnCnstn/BSUIR/3k1s/java/lab2/xml/profiles.xml"));
+
+            //записываем данные
+            transformer.transform(source, file);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,11 +90,8 @@ public class DOMXmlWriter {
 
         Element studentProfile = doc.createElement("Student");
 
-//        // устанавливаем атрибут id
-//        studentProfile.setAttribute("id", id);
-
         studentProfile.appendChild(getProfileElements(doc, studentProfile, "id", id));
-        // создаем элемент firstName
+
         studentProfile.appendChild(getProfileElements(doc, studentProfile, "firstName", firstName));
 
         studentProfile.appendChild(getProfileElements(doc, studentProfile, "secondName", secondName));
@@ -80,7 +102,6 @@ public class DOMXmlWriter {
 
         return studentProfile;
     }
-
 
     // утилитный метод для создание нового узла XML-файла
     private static Node getProfileElements(Document doc, Element element, String name, String value) {

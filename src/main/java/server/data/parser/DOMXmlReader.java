@@ -9,11 +9,13 @@ import server.data.profile.Profile;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DOMXmlReader {
-    public static void reader() {
+
+    public static void read(PrintWriter out) {
         String filepath = "D:/JohnCnstn/BSUIR/3k1s/java/lab2/xml/profiles.xml";
         File xmlFile = new File(filepath);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -31,18 +33,45 @@ public class DOMXmlReader {
             NodeList nodeList = document.getElementsByTagName("Student");
 
             // создадим из него список объектов Archive
-            List<Profile> profileList = new ArrayList<Profile>();
+            List<Profile> profileList = new ArrayList<>();
             for (int i = 0; i < nodeList.getLength(); i++) {
                 profileList.add(getProfile(nodeList.item(i)));
             }
 
             // печатаем в консоль информацию по каждому объекту Archive
             for (Profile lang : profileList) {
-                System.out.println(lang.toString());
+                out.println(lang.toString());
             }
+
         } catch (Exception exc) {
             exc.printStackTrace();
         }
+    }
+
+    public static int getNumberOfElements() {
+        String filepath = "D:/JohnCnstn/BSUIR/3k1s/java/lab2/xml/profiles.xml";
+        File xmlFile = new File(filepath);
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        int numberOfElements = 0;
+        try {
+            builder = factory.newDocumentBuilder();
+            Document document = builder.parse(xmlFile);
+            document.getDocumentElement().normalize();
+            System.out.println("Корневой элемент: " + document.getDocumentElement().getNodeName());
+
+            // получаем узлы с именем Archive
+            // теперь XML полностью загружен в память
+            // в виде объекта Document
+
+            NodeList nodeList = document.getElementsByTagName("Student");
+
+            numberOfElements = nodeList.getLength();
+
+        } catch (Exception exc) {
+            exc.printStackTrace();
+        }
+        return numberOfElements;
     }
 
     private static Profile getProfile(Node node) {
@@ -57,6 +86,32 @@ public class DOMXmlReader {
             profile.setAvgScore(Byte.parseByte(getTagValue("avgScore", element)));
         }
 
+        return profile;
+    }
+
+    public static Profile getProfileById(int id) {
+        String filepath = "D:/JohnCnstn/BSUIR/3k1s/java/lab2/xml/profiles.xml";
+        File xmlFile = new File(filepath);
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        Profile profile = new Profile();
+        try {
+            builder = factory.newDocumentBuilder();
+            Document document = builder.parse(xmlFile);
+            document.getDocumentElement().normalize();
+            System.out.println("Корневой элемент: " + document.getDocumentElement().getNodeName());
+
+            // получаем узлы с именем Archive
+            // теперь XML полностью загружен в память
+            // в виде объекта Document
+
+            NodeList nodeList = document.getElementsByTagName("Student");
+
+            profile = getProfile(nodeList.item(id));
+
+        } catch (Exception exc) {
+            exc.printStackTrace();
+        }
         return profile;
     }
 
