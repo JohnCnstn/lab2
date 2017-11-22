@@ -37,6 +37,8 @@ public class DOMXmlWriter {
             //создаем объект TransformerFactory для печати в консоль
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
+
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             // для красивого вывода в консоль
             DOMSource source = new DOMSource(doc);
 
@@ -60,16 +62,18 @@ public class DOMXmlWriter {
             builder = factory.newDocumentBuilder();
             Document doc = builder.parse(xmlFile);
             doc.getDocumentElement().normalize();
+
             Element element =
                     doc.getDocumentElement();
 
-            // добавляем первый дочерний элемент к корневому
             element.appendChild(getProfile(doc, id, firstName, secondName,
                     university, avgScore));
 
             //создаем объект TransformerFactory для печати в консоль
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
+
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
             DOMSource source = new DOMSource(doc);
 

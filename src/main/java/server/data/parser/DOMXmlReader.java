@@ -4,7 +4,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import server.data.profile.Profile;
+import server.data.profile.impl.Profile;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -67,7 +67,6 @@ public class DOMXmlReader {
             NodeList nodeList = document.getElementsByTagName("Student");
 
             numberOfElements = nodeList.getLength();
-
         } catch (Exception exc) {
             exc.printStackTrace();
         }

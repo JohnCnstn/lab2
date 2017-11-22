@@ -4,6 +4,7 @@ import server.presentation.delegator.Delegator;
 import server.presentation.view.IView;
 import server.presentation.view.admin.AdminView;
 import server.presentation.view.greetinger.GreetingView;
+import server.presentation.view.headadmin.HeadAdminView;
 import server.presentation.view.reader.ReaderView;
 import server.presentation.view.student.StudentView;
 
@@ -37,6 +38,10 @@ public class DelegatorImpl extends Delegator {
             }
             case 3: {
                 view = new AdminView(out, in);
+                break;
+            }
+            case 4: {
+                view = new HeadAdminView(out, in);
                 break;
             }
         }

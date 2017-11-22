@@ -1,13 +1,7 @@
 package server;
 
-import server.data.parser.DOMXmlModifier;
-import server.data.parser.DOMXmlReader;
-import server.data.parser.DOMXmlWriter;
 import server.presentation.delegator.IDelegator;
 import server.presentation.delegator.impl.greetinger.DelegatorImpl;
-import server.presentation.view.IView;
-import server.presentation.view.View;
-import server.presentation.view.greetinger.GreetingView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,6 +15,8 @@ public class Server {
     public static void main(String[] args) throws IOException {
 
         System.out.println("Server running...");
+
+//        DOMXmlWriter.create("0","Pasha","Khankevich","BSUIR", "6");
 
         BufferedReader in;
         PrintWriter out;
@@ -57,6 +53,8 @@ public class Server {
         input = in.readLine();
 
         delegator.whatView(Integer.parseInt(input));
+
+        out.println("exit");
 
         out.close();
         in.close();

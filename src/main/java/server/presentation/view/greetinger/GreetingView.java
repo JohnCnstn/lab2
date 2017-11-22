@@ -13,8 +13,8 @@ public class GreetingView extends View {
 
     @Override
     public void setViewForUser(PrintWriter out, BufferedReader in) {
-        out.println(5);
+        out.println(6);
         out.println("Hello again Walker ;) \nWrite your role for me pls \nPress 1 for role Reader" +
-                "\nPress 2 for role Student \nPress 3 for role Admin");
+                "\nPress 2 for role Student \nPress 3 for role Admin \nPress 4 for role Head Admin");
     }
 }

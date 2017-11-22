@@ -8,9 +8,9 @@ import java.net.Socket;
 
 public class Client {
 
-    public static void main(String[] args) throws IOException {
-
+    public void createClient() throws IOException {
         System.out.println("Welcome to Client side");
+
 
         Socket fromServer;
 
@@ -28,7 +28,7 @@ public class Client {
         BufferedReader inu = new
                 BufferedReader(new InputStreamReader(System.in));
 
-        String fuser,fserver;
+        String fuser,fserver = null;
 
         int j;
 
@@ -38,9 +38,9 @@ public class Client {
                 fserver = in.readLine();
                 System.out.println(fserver);
             }
+            if (fserver.equals("exit")) break;
             fuser = inu.readLine();
             out.println(fuser);
-            if (fuser.equalsIgnoreCase("exit")) break;
         }
 
         out.close();

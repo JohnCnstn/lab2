@@ -1,4 +1,4 @@
-package server.data.profile;
+package server.data.profile.impl;
 
 import lombok.Getter;
 import lombok.Setter;

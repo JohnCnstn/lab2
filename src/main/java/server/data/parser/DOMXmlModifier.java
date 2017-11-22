@@ -20,7 +20,7 @@ import org.w3c.dom.NodeList;
 
 public class DOMXmlModifier {
 
-    public static void modify(int id, String node, String value) {
+    public static void modify(int id, String name, String value) {
         String filepath = "D:/JohnCnstn/BSUIR/3k1s/java/lab2/xml/profiles.xml";
         File xmlFile = new File(filepath);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -31,7 +31,7 @@ public class DOMXmlModifier {
             doc.getDocumentElement().normalize();
 
             // обновляем значения
-            updateElementValue(doc, id, node, value);
+            updateElementValue(doc, id, name, value);
 
             doc.getDocumentElement().normalize();
             TransformerFactory transformerFactory = TransformerFactory.newInstance();

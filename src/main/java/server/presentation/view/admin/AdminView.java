@@ -1,10 +1,6 @@
 package server.presentation.view.admin;
 
-import server.data.parser.DOMXmlModifier;
-import server.data.parser.DOMXmlReader;
-import server.data.parser.DOMXmlWriter;
 import server.data.profile.EditProfileData;
-import server.data.profile.Profile;
 import server.presentation.view.View;
 
 import java.io.BufferedReader;
@@ -19,16 +15,15 @@ public class AdminView extends View implements EditProfileData {
 
     @Override
     public void setViewForUser(PrintWriter out, BufferedReader in) {
-        int i = 1 + DOMXmlReader.getNumberOfElements() + 1;
+        int i = 1 + getXmlFileDao().getNumberOfElements() + 1;
         out.println(i);
         out.println("Your role is Admin (you can modify profiles)");
-        DOMXmlReader.read(out);
-
+        getXmlFileDao().read(out);
         editProfileData(out, in);
 
-        i = DOMXmlReader.getNumberOfElements();
+        i = getXmlFileDao().getNumberOfElements();
         out.println(i);
-        DOMXmlReader.read(out);
+        getXmlFileDao().read(out);
     }
 
     @Override
@@ -42,7 +37,7 @@ public class AdminView extends View implements EditProfileData {
             out.println(1);
             out.println("Write value you want to set");
             String value = in.readLine();
-            DOMXmlModifier.modify(id, name, value);
+            getXmlFileDao().modify(id, name, value);
         } catch (IOException e) {
             e.printStackTrace();
         }

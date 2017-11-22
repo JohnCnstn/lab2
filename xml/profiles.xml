@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><Profiles xmlns="by.BSUIR">
 <Student>
 <id>0</id>
-<firstName>Bogdan</firstName>
-<secondName>dasko</secondName>
-<university>ksdoa</university>
-<avgScore>4</avgScore>
+<firstName>Pasha</firstName>
+<secondName>Khankevich</secondName>
+<university>BNTU</university>
+<avgScore>6</avgScore>
 </Student>
-<Student><id>1</id><firstName>sad</firstName><secondName>cxz</secondName><university>asd</university><avgScore>2</avgScore></Student></Profiles>
+<Student>
+<id>1</id>
+<firstName>Ekaterina</firstName>
+<secondName>Kriger</secondName>
+<university>BSUIR</university>
+<avgScore>10</avgScore>
+</Student>
+</Profiles>
