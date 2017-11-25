@@ -1,4 +1,4 @@
-package client;
+package client.objects;
 
 import client.config.ClientConfig;
 import org.springframework.context.ApplicationContext;

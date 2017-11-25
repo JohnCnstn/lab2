@@ -1,15 +1,9 @@
 package client.config;
 
-import client.Client;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan("client.objects")
 public class ClientConfig {
-
-    @Bean(name="client")
-    public Client getClient(){
-        return new Client();
-    }
-
 }

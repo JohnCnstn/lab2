@@ -1,4 +1,6 @@
-package client;
+package client.objects;
+
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+@Component
 public class Client {
 
     public void createClient() throws IOException {

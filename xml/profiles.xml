@@ -1,10 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Profiles xmlns="by.BSUIR">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Profiles xmlns="by.BSUIR">
 <Student id="0">
 <id>0</id>
 <firstName>Павел</firstName>
 <secondName>Ханкевич</secondName>
 <university>БГУиР</university>
-<avgScore>6</avgScore>
+<avgScore>7</avgScore>
+</Student>
+<Student id="1">
+<id>1</id>
+<firstName>Dima</firstName>
+<secondName>Umetskiy</secondName>
+<university>BSUiR</university>
+<avgScore>9</avgScore>
 </Student>
 </Profiles>
